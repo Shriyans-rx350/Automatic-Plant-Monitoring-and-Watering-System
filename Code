@@ -1,0 +1,87 @@
+#include <Wire.h>
+#include <Adafruit_LiquidCrystal.h>
+
+Adafruit_LiquidCrystal lcd_1(0x27);
+
+int sensorPin = A0;
+int relayPin  = 6;
+int ledDry    = 3;
+int ledWet    = 7;
+
+int soilValue = 0;
+int threshold = 350;
+
+int lastSoilValue = -1;
+int lastSoilState = -1; // 1=DRY, 0=WET
+int lastPumpState = -1; // HIGH or LOW
+
+void setup()
+{
+  pinMode(sensorPin, INPUT);
+  pinMode(relayPin, OUTPUT);
+  pinMode(ledDry, OUTPUT);
+  pinMode(ledWet, OUTPUT);
+
+  Serial.begin(9600);
+
+  lcd_1.begin(20, 4);     // big LCD (20x4)
+  lcd_1.setBacklight(1);
+
+  // Static labels (printed once)
+  lcd_1.setCursor(0, 0);
+  lcd_1.print("Soil Moisture Sys");
+
+  lcd_1.setCursor(0, 1);
+  lcd_1.print("Value:");
+
+  lcd_1.setCursor(0, 2);
+  lcd_1.print("Soil:");
+
+  lcd_1.setCursor(0, 3);
+  lcd_1.print("Pump:");
+}
+
+void loop()
+{
+  soilValue = analogRead(sensorPin);
+  Serial.println(soilValue);
+
+  if (soilValue >= threshold) {
+    digitalWrite(relayPin, HIGH);   // change to LOW if your relay is active-LOW
+    digitalWrite(ledDry, LOW);
+    digitalWrite(ledWet, LOW);
+  } else {
+    digitalWrite(relayPin, LOW);
+    digitalWrite(ledDry, HIGH);
+    digitalWrite(ledWet, HIGH);
+  }
+
+  int soilState = (soilValue >= threshold) ? 1 : 0;     // 1=DRY, 0=WET
+  int pumpState = digitalRead(relayPin);                // HIGH or LOW (matches your logic)
+
+  if (soilValue != lastSoilValue) {
+    lcd_1.setCursor(6, 1);
+    lcd_1.print(soilValue);
+    lastSoilValue = soilValue;
+  }
+
+  // Update DRY/WET only if changed
+  if (soilState != lastSoilState) {
+//    lcd_1.setCursor(6, 2);
+//    lcd_1.print("    ");
+//    lcd_1.setCursor(6, 2);
+//    lcd_1.print(soilState ? "DRY" : "WET");
+    lastSoilState = soilState;
+  }
+
+  // Update Pump ON/OFF only if changed
+  if (pumpState != lastPumpState) {
+//    lcd_1.setCursor(6, 3);
+//    lcd_1.print("    ");
+//    lcd_1.setCursor(6, 3);
+//    lcd_1.print(pumpState == HIGH ? "ON" : "OFF");
+    lastPumpState = pumpState;
+  }
+
+  delay(200);
+}
