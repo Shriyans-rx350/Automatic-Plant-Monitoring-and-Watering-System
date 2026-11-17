@@ -1,0 +1,17 @@
+Reflection
+
+
+
+For my final summative, I chose to build an Automated Soil Moisture & Watering  System using an Arduino. The goal of this project was to monitor the moisture level of soil and automatically turn on a water pump based on set thresholds within the code when the soil becomes too dry. This system uses a soil moisture sensor to detect the dryness, LEDs to indicate the soil moisture, a relay to control the pump, and an LCD screen to display necessary information. This project combines hardware and software concepts learned throughout the course and even from Grade 11. 
+
+One of the main challenges I faced during this project was related to hardware. Connecting multiple components such as the soil moisture sensor, relay and a water pump, something I’ve never used before. At one point, the LEDs had to be redone because it was too short to fit through the holes of the circuit box due to them being firmly planted on the breadboard. I was required to solder a longer pair of wires so the LEDs could be mounted properly. Furthermore, there were several mix-ups with the components. The relay was supposed to be bought separately due it not arriving on time, wasting a day or two in this, as well as not ordering the correct soil moisture sensor. The one that was ordered was unfortunately a digital sensor, which is not suitable for this project. Another hardware challenge was routing the water tubing correctly through the pipes and ensuring no leaks. 
+
+I also faced several challenges in terms of software. Getting the LCD to display information without flickering was difficult at first. I was required to modify the code so that the screen only updates when values change. However after troubleshooting, this issue still persisted, requiring me to ditch the LCD display. Another challenge I encountered was limited access to the 3D printer due to a heavy lineup. Because many students were waiting to use it, I was unable to print a custom enclosure as planned previously, requiring me to print from elsewhere. I also adapted my design and built a circuit box using cardboard instead, which still did the job and allowed the project to function as planned regardless of circumstances. 
+
+One of my biggest strengths throughout this project was definitely persistence. When something did not work, I continued troubleshooting instead of giving up. I also demonstrated problem solving skills by breaking down complex problems into smaller steps, achieving success. My organization and willingness to test and trying to enhance my design helped me complete this project. 
+
+If I were to do this project again, I would make several design and planning improvements. Based on teacher feedback, I would fully enclose the system in a green-house style structure to make the project look more realistic and visually appealing. I would also improve the overall appearance by hiding wires effectively and using stronger materials instead of cardboard. In addition, I would manage my class time more effectively, focusing on consistent progress rather than working on related tasks. Better planning from the beginning, such as creating a detailed timeline and design layout, would help reduce last-minute adjustments and improve the final result. 
+
+Overall, this project helped me better understand both hardware and software integration and improved my confidence in building and troubleshooting electronic systems.
+
+
